@@ -32,9 +32,21 @@
 #Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 
-def forrest_solution():
+def forrest_solution(roman_numerals):
     pass
 
-def kevin_solution():
+def kevin_solution(roman_numerals):
     pass
 
+def test_solution(method):
+    assert method("IV") == 4
+    assert method("LVIII") == 58
+    assert method("MCMXCIV") == 1994
+
+def run():
+    methods = [forrest_solution, kevin_solution]
+    for method in methods:
+        test_solution(method)
+
+if __name__ == '__main__':
+    run()
