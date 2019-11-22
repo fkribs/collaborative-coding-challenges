@@ -24,7 +24,17 @@ class Palindrome{
     }
 
     public static boolean KevinSolution(String str) {
-        return false;
+        if(word.length() == 0) return true;
+	    int left = 0;
+	    int right = word.length() - 1;
+	    while(left < right){
+	        if(word.charAt(left) != word.charAt(right)){
+	            return false;
+	        }
+	        left++;
+	        right--;
+	    }
+	    return true;
     }
 
     public static boolean ForrestSolution(String str) {
@@ -37,3 +47,5 @@ class Palindrome{
         return true;
     }
 }
+
+
