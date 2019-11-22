@@ -17,6 +17,9 @@
 
 class Solution {
     public static void main(String[] args) {
+        int[] array = new int[]{-4, -1, 0, 3, 10};
+        System.out.println(Arrays.toString(ForrestSolution(array)));
+        System.out.println(Arrays.toString(KevinSolution(array)));
     }
 
 
