@@ -53,7 +53,54 @@ class Solution {
         return squares;
     }
 
-    public static int[] KevinSolution(int[] A) {
-        return new int[A.length];
+    // ----------------------------------------------------------------
+    public static int[] KevinSolution1(int[] A){
+        int[]res = new int[A.length];
+        int pointer = 0;
+        while(A[pointer] < 0){
+            pointer++;
+        }
+        int negPointer = pointer - 1;
+        int i = 0;
+        while(negPointer >= 0){
+            if(A[negPointer] * A[negPointer] < A[pointer] * A[pointer]){
+                res[i] = A[negPointer] * A[negPointer];
+                i++;
+                negPointer--;
+            }else{
+                res[i] = A[pointer] * A[pointer];
+                pointer++;
+                i++;
+            }
+        }
+        while(pointer < A.length){
+            res[i] = A[pointer] * A[pointer];
+            i++;
+            pointer++;
+        }
+        return res;
+    }
+    //------------------------------------------------------------
+
+    public static int[] KevinSolution2(int[] A){
+        int[]res = new int[A.length];
+        for(int i = 0; i < A.length; i++){
+            res[i] = A[i] * A[i];
+        }
+        Arrays.sort(res);
+        return res;
+    }
+
+    // -----------------------------------------------------------
+
+    public static int[] KevinSolution3(int[] A){
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for(int i = 0; i < A.length; i++){
+            queue.add(A[i] * A[i]);
+        }
+        for(int j = 0; j < A.length; j++){
+            A[j] = queue.poll();
+        }
+        return A;
     }
 }
