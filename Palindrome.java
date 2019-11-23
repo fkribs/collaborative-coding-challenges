@@ -23,7 +23,7 @@ class Palindrome{
         System.out.println(ForrestSolution(value));
     }
 
-    public static boolean KevinSolution(String str) {
+    public static boolean KevinSolution(String word) {
         if(word.length() == 0) return true;
 	    int left = 0;
 	    int right = word.length() - 1;
