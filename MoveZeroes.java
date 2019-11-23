@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Random;
+import java.util.function.*;;
 
 // Given an array nums, write a function to move all 0's 
 // to the end of it while maintaining the relative order of the non-zero elements.
@@ -13,17 +15,44 @@ import java.util.Arrays;
 
 class Program {
     public static void main(String[] args) {
-        int[] array1 = new int[]{0, 1, 0, 3, 12};
-        int[] array2 = new int[]{0, 1, 0, 3, 12};
-    
-        ForrestSolution2(array1);
-        System.out.println(Arrays.toString(array1));
-        KevinSolution(array2);
-        System.out.println(Arrays.toString(array2));
+        int[] arr = GenerateIntArray(5);
+
+        int[] arr2 = CopyArray(arr);
+        System.out.println(Arrays.toString(arr2));
+        long elapsed = Time(Program::ForrestSolution, arr2);
+        System.out.println(Arrays.toString(arr2));
+        System.out.println(elapsed + " milliseconds");
+        // KevinSolution(array2);
+        // System.out.println(Arrays.toString(array2));
 
     }
+
+    private static long Time(Consumer<int[]> c, int[] input){
+        long startTime = System.currentTimeMillis();
+        c.accept(input);
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        return elapsedTime;
+    }
+
+    private static int[] GenerateIntArray(int size){
+        Random rnd = new Random();
+        int[] arr = new int[size];
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = rnd.nextInt(9);
+        }
+        return arr;
+    }
+
+    private static int[] CopyArray(int[] arr){
+        int length = arr.length;
+        int[] arr2 = new int[length];
+        for (int i = 0; i< length; i++){
+            arr2[i] = arr[i];
+        }
+        return arr2;
+    }
     public static void ForrestSolution(int[] nums) {
-        // int numZeroes = 0;
         int length = nums.length;
         for (int i = 0; i < length; i++) {
             if (nums[i] != 0)
