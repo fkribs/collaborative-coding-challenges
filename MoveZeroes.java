@@ -15,19 +15,53 @@ import java.util.function.*;;
 
 class Program {
     public static void main(String[] args) {
-        int[] arr = GenerateIntArray(5);
+        int start = 5;
+        double percentIncrease = 1.00;
+        int max = 1_000_000;
+        for (int i = start; i < max; i = (int) (i * (1 +percentIncrease))){
+            System.out.println("\n\tTesting at '" + i + "' items.");
+            if (max > 100)
+                Test(i);
+            else
+                Test(i, true);
+        }
+    }
 
-        int[] arr2 = CopyArray(arr);
-        System.out.println(Arrays.toString(arr2));
-        long elapsed = Time(Program::ForrestSolution, arr2);
-        System.out.println(Arrays.toString(arr2));
-        System.out.println(elapsed + " milliseconds");
-        // KevinSolution(array2);
-        // System.out.println(Arrays.toString(array2));
+    private static void Test(int arraySize){
+        Test(arraySize, false);
+    }
+    private static void Test(int arraySize, boolean printResult) {
+        int[] arr = GenerateIntArray(arraySize);
+        if (printResult){
+            System.out.println("Generated array:\t");
+            System.out.println(Arrays.toString(arr));
+        }
+
+        int[] arrCopy = CopyArray(arr);
+        String label = "Forrest 1";
+        long elapsed = Time(Program::ForrestSolution, arrCopy);
+        System.out.println(label + ": " + elapsed + " milliseconds");
+        if (printResult)
+            System.out.println(Arrays.toString(arrCopy));
+
+        arrCopy = CopyArray(arr);
+        label = "Forrest 2";
+        elapsed = Time(Program::ForrestSolution2, arrCopy);
+        System.out.println(label + ": " + elapsed + " milliseconds");
+        if (printResult)
+            System.out.println(Arrays.toString(arrCopy));
+
+        arrCopy = CopyArray(arr);
+        label = "Kevin";
+        elapsed = Time(Program::KevinSolution, arrCopy);
+        KevinSolution(arrCopy);
+        System.out.println(label + ": " + elapsed + " milliseconds");
+        if (printResult)
+            System.out.println(Arrays.toString(arrCopy));
 
     }
 
-    private static long Time(Consumer<int[]> c, int[] input){
+    private static long Time(Consumer<int[]> c, int[] input) {
         long startTime = System.currentTimeMillis();
         c.accept(input);
         long stopTime = System.currentTimeMillis();
@@ -35,23 +69,24 @@ class Program {
         return elapsedTime;
     }
 
-    private static int[] GenerateIntArray(int size){
+    private static int[] GenerateIntArray(int size) {
         Random rnd = new Random();
         int[] arr = new int[size];
-        for (int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = rnd.nextInt(9);
         }
         return arr;
     }
 
-    private static int[] CopyArray(int[] arr){
+    private static int[] CopyArray(int[] arr) {
         int length = arr.length;
         int[] arr2 = new int[length];
-        for (int i = 0; i< length; i++){
+        for (int i = 0; i < length; i++) {
             arr2[i] = arr[i];
         }
         return arr2;
     }
+
     public static void ForrestSolution(int[] nums) {
         int length = nums.length;
         for (int i = 0; i < length; i++) {
@@ -64,6 +99,7 @@ class Program {
             }
         }
     }
+
     public static void ForrestSolution2(int[] nums) {
         int length = nums.length;
         for (int i = 0; i < length; i++) {
@@ -83,11 +119,12 @@ class Program {
             }
         }
     }
-    public static void KevinSolution(int[] nums){
+
+    public static void KevinSolution(int[] nums) {
         int left = 0;
         int temp;
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] != 0){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
                 temp = nums[left];
                 nums[left] = nums[i];
                 nums[i] = temp;
