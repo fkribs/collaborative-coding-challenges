@@ -20,7 +20,19 @@ class Program {
     }
 
     public static int ForrestSolution(int[] nums){
-        return -1;
+        int res = 0;
+        int subarraySize = 1;
+        for (int i = 0; i < nums.length; i++){
+            int currentVal = nums[i];
+            if (currentVal >= res / subarraySize){
+                res += currentVal;
+                subarraySize++;
+            }else{
+                res = 0;
+                subarraySize = 1;
+            }
+        }
+        return res;
     }
 
     public static int KevinSolution(int[] nums){
