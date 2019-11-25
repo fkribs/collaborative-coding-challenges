@@ -20,10 +20,10 @@ class Program {
     }
 
     public static int ForrestSolution(int[] nums){
-
+        return -1;
     }
 
     public static int KevinSolution(int[] nums){
-
+        return -1;
     }
 }
