@@ -1,4 +1,4 @@
-import java.util.*;
+// import java.util.*;
 
 // Symbol       Value
 // I             1
@@ -35,78 +35,78 @@ import java.util.*;
 class RomanToInt{
     public static void main(String[] args) {
 
-        String romanNumeral = "MXIX";
-        HashMap<Character, Integer> map = Initialize();
-        System.out.println(map);
-        System.out.println(KevinSolution(map, romanNumeral));
+        // String romanNumeral = "MXIX";
+        // HashMap<Character, Integer> map = Initialize();
+        // System.out.println(map);
+        // System.out.println(KevinSolution(map, romanNumeral));
 
-        map = Initialize();
-        System.out.println(map);
-        System.out.println(ForrestSolution(map, romanNumeral));
+        // map = Initialize();
+        // System.out.println(map);
+        // System.out.println(ForrestSolution(map, romanNumeral));
     }
 
-    private static HashMap<Character, Integer> Initialize() {
-        HashMap<Character, Integer> map = new HashMap() {
-            {
-                put('I', 1);
-                put('V', 5);
-                put('X', 10);
-                put('L', 50);
-                put('C', 100);
-                put('D', 500);
-                put('M', 1000);
-            }
-        };
-        return map;
-    }
+    // private static HashMap<Character, Integer> Initialize() {
+    //     HashMap<Character, Integer> map = new HashMap() {
+    //         {
+    //             put('I', 1);
+    //             put('V', 5);
+    //             put('X', 10);
+    //             put('L', 50);
+    //             put('C', 100);
+    //             put('D', 500);
+    //             put('M', 1000);
+    //         }
+    //     };
+    //     return map;
+    // }
 
-    public static int KevinSolution(HashMap<Character, Integer> map, String roman) {
-        int res = 0;
-        Stack<Integer> stack = new Stack();
-        for (char c : roman.toCharArray()) {
-            stack.push(map.get(c));
-        }
-        int current = stack.pop();
-        res += current;
-        while (!stack.isEmpty()) {
-            int popped = stack.pop();
-            if (popped < current) {
-                res -= popped;
-                current = popped;
-            } else {
-                res += popped;
-                current = popped;
-            }
-        }
-        return res;
-    }
+    // public static int KevinSolution(HashMap<Character, Integer> map, String roman) {
+    //     int res = 0;
+    //     Stack<Integer> stack = new Stack();
+    //     for (char c : roman.toCharArray()) {
+    //         stack.push(map.get(c));
+    //     }
+    //     int current = stack.pop();
+    //     res += current;
+    //     while (!stack.isEmpty()) {
+    //         int popped = stack.pop();
+    //         if (popped < current) {
+    //             res -= popped;
+    //             current = popped;
+    //         } else {
+    //             res += popped;
+    //             current = popped;
+    //         }
+    //     }
+    //     return res;
+    // }
 
-    public static int ForrestSolution(HashMap<Character, Integer> map, String roman) {
-        int res = 0;
-        List<Integer> items = new ArrayList<Integer>();
-        for (char c : roman.toCharArray()) {
-            items.add(map.get(c));
-        }
-        System.out.println(items);
-        Integer current;
-        Integer next;
-        Integer size = items.size();
-        for (int i = 0; i < size; i++) {
-            if (i == size - 1){
-                res += items.get(i);
-                break;
-            }
-            current = items.get(i);
-            next = items.get(i+1);
-            if (next > current){
-                res += next - current;
-                i++;
-            }
-            else{
-                res += current;
-            }
-        }
-        return res;
-    }
+    // public static int ForrestSolution(HashMap<Character, Integer> map, String roman) {
+    //     int res = 0;
+    //     List<Integer> items = new ArrayList<Integer>();
+    //     for (char c : roman.toCharArray()) {
+    //         items.add(map.get(c));
+    //     }
+    //     System.out.println(items);
+    //     Integer current;
+    //     Integer next;
+    //     Integer size = items.size();
+    //     for (int i = 0; i < size; i++) {
+    //         if (i == size - 1){
+    //             res += items.get(i);
+    //             break;
+    //         }
+    //         current = items.get(i);
+    //         next = items.get(i+1);
+    //         if (next > current){
+    //             res += next - current;
+    //             i++;
+    //         }
+    //         else{
+    //             res += current;
+    //         }
+    //     }
+    //     return res;
+    // }
 
 }

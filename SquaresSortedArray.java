@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 // Given an array of integers A sorted in non-decreasing order, 
 //return an array of the squares of each number, 
@@ -21,7 +22,7 @@ class Solution {
     public static void main(String[] args) {
         int[] array = new int[] { -4, -1, 0, 3, 10 };
         System.out.println(Arrays.toString(ForrestSolution(array)));
-        System.out.println(Arrays.toString(KevinSolution(array)));
+        System.out.println(Arrays.toString(KevinSolution1(array)));
     }
 
     public static int[] ForrestSolution(int[] A) {
