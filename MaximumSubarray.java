@@ -36,6 +36,15 @@ class Program {
     }
 
     public static int KevinSolution(int[] nums){
-        return -1;
+        int current = nums[0];
+        int max = nums[0];
+        //int i = 1 because we have nums[0] already
+        for(int i = 1; i < nums.length; i++){ 
+            // is the new nums[i] number bigger by itself OR with current value added to it ?
+            current = Math.max(current + nums[i], nums[i]);
+            //is the new current bigger or is max still the biggest?
+            max = Math.max(current, max);
+        }
+        return max;
     }
 }
