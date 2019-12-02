@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - WaterContainer",
+            "request": "launch",
+            "mainClass": "WaterContainer",
+            "projectName": "collaborative-coding-challenges_7df40ef"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Program",
             "request": "launch",
             "mainClass": "Program",

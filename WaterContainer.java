@@ -10,13 +10,11 @@
 // Input: [1,8,6,2,5,4,8,3,7]
 // Output: 49
 
-class Program {
+class WaterContainer{
     public static void main(String[] args) {
         int[] arr = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
         System.out.println(maxAreaForrest(arr));
         System.out.println(maxAreaKevin(arr));
-
-
     }
 
     public static int maxAreaForrest(int[] height){
