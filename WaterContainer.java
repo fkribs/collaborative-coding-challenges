@@ -19,11 +19,11 @@ class Program {
 
     }
 
-    public int maxAreaForrest(int[] height){
+    public static int maxAreaForrest(int[] height){
         return -1;
     }
 
-    public int maxAreaKevin(int[] height){
+    public static int maxAreaKevin(int[] height){
         return -1;
     }
 }
