@@ -12,7 +12,7 @@
 // try coding another solution using the divide and conquer approach,
 // which is more subtle.
 
-class Program {
+class MaximumSubarray{
     public static void main(String[] args) {
         int[] array = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println("Forrest: " + ForrestSolution(array));

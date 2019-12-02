@@ -20,7 +20,18 @@ class Program {
     }
 
     public static int maxAreaForrest(int[] height){
-        return -1;
+        int length = height.length;
+        int max = 0;
+        for(int i = 0; i < length; i++){
+            for(int i2 = 0; i2 < length; i2++){
+                int minHeight = Math.min(height[i], height[i2]);
+                int area = minHeight * (i2 - i);
+                if (area > max){
+                    max = area;
+                }
+            }
+        }
+        return max;
     }
 
     public static int maxAreaKevin(int[] height){

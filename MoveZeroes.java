@@ -13,7 +13,7 @@ import java.util.function.*;;
 // You must do this in-place without making a copy of the array.
 // Minimize the total number of operations.
 
-class Program {
+class MoveZeroes {
     public static void main(String[] args) {
         int start = 5;
         double percentIncrease = 1.00;
@@ -39,21 +39,21 @@ class Program {
 
         int[] arrCopy = CopyArray(arr);
         String label = "Forrest 1";
-        long elapsed = Time(Program::ForrestSolution, arrCopy);
+        long elapsed = Time(MoveZeroes::ForrestSolution, arrCopy);
         System.out.println(label + ": " + elapsed + " milliseconds");
         if (printResult)
             System.out.println(Arrays.toString(arrCopy));
 
         arrCopy = CopyArray(arr);
         label = "Forrest 2";
-        elapsed = Time(Program::ForrestSolution2, arrCopy);
+        elapsed = Time(MoveZeroes::ForrestSolution2, arrCopy);
         System.out.println(label + ": " + elapsed + " milliseconds");
         if (printResult)
             System.out.println(Arrays.toString(arrCopy));
 
         arrCopy = CopyArray(arr);
         label = "Kevin";
-        elapsed = Time(Program::KevinSolution, arrCopy);
+        elapsed = Time(MoveZeroes::KevinSolution, arrCopy);
         KevinSolution(arrCopy);
         System.out.println(label + ": " + elapsed + " milliseconds");
         if (printResult)
