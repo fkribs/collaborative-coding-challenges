@@ -18,16 +18,20 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
 
-class ProgramTemplate {
+class MaxStockProfit {
     public static void main(String[] args) {
-
+        int[] input = new int[]{7,6,4,3,1};
+        int forrestResult = maxProfitForrest(input);
+        int kevinResult = maxProfitKevin(input);
+        System.out.println(forrestResult);
+        System.out.println(kevinResult);
     }
 
-    public int maxProfitForrest(int[] prices) {
+    public static int maxProfitForrest(int[] prices) {
         return -1;
     }
 
-    public int maxProfitKevin(int[] prices) {
+    public static int maxProfitKevin(int[] prices) {
         return -1;
     }
 
