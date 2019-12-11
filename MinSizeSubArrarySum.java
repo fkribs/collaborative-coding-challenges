@@ -11,11 +11,14 @@
 class MinSizeSubArraySum {
     public static void main(String[] args) {
         int[] input = new int[]{2,3,1,2,4,3};
-        int forrestResult = minSizeForrest(input);
-        int kevinResult = minSizeKevin(input);
+        int minSum = 7;
+        int forrestResult = minSizeForrest(minSum, input);
+        int kevinResult = minSizeKevin(minSum, input);
         System.out.println(forrestResult);
         System.out.println(kevinResult);
+        
     }
+    
 
     public static int minSizeForrest(int s, int [] nums){
         return -1;
