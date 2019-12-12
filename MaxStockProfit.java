@@ -26,7 +26,7 @@ class MaxStockProfit {
         System.out.println("MaxStockProfit Test");
         int start = 5;
         double percentIncrease = 1.00;
-        int max = 1_000_000;
+        int max = 500_000_000;
         for (int i = start; i < max; i = (int) (i * (1 + percentIncrease))) {
             System.out.println("\n\tTesting at '" + i + "' items.");
             if (max > 100)
@@ -91,21 +91,29 @@ class MaxStockProfit {
 
         int[] arrCopy = CopyArray(arr);
         String label = "Forrest";
-        long elapsed = Time(MoveZeroes::ForrestSolution, arrCopy);
-        System.out.println(label + ": " + elapsed + " milliseconds");
-        if (printResult)
-            System.out.println(Arrays.toString(arrCopy));
-        
-        arrCopy = CopyArray(arr);
-        label = "Forrest 2";
-        elapsed = Time(MoveZeroes::ForrestSolution2, arrCopy);
+        long elapsed = Time(MaxStockProfit::ForrestSolution, arrCopy);
         System.out.println(label + ": " + elapsed + " milliseconds");
         if (printResult)
             System.out.println(Arrays.toString(arrCopy));
 
         arrCopy = CopyArray(arr);
         label = "Kevin";
-        elapsed = Time(MoveZeroes::KevinSolution, arrCopy);
+        elapsed = Time(MaxStockProfit::KevinSolution, arrCopy);
+        KevinSolution(arrCopy);
+        System.out.println(label + ": " + elapsed + " milliseconds");
+        if (printResult)
+            System.out.println(Arrays.toString(arrCopy));
+        arrCopy = CopyArray(arr);
+
+        label = "Forrest 2";
+        elapsed = Time(MaxStockProfit::ForrestSolution2, arrCopy);
+        System.out.println(label + ": " + elapsed + " milliseconds");
+        if (printResult)
+            System.out.println(Arrays.toString(arrCopy));
+
+        arrCopy = CopyArray(arr);
+        label = "Kevin, second attempt";
+        elapsed = Time(MaxStockProfit::KevinSolution, arrCopy);
         KevinSolution(arrCopy);
         System.out.println(label + ": " + elapsed + " milliseconds");
         if (printResult)
