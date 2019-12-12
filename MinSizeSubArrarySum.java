@@ -25,6 +25,17 @@ class MinSizeSubArraySum {
     }
 
     public static int minSizeKevin(int s, int [] nums){
-        return -1;
+        int min = Integer.MAX_VALUE;
+        int left = 0;
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++){
+            sum = sum + nums[i];
+            while(sum >= s){
+                min = Math.min(min, (i + 1) - left);
+                sum = sum - nums[left];
+                left++;
+            }
+        }
+        return (min != Integer.MAX_VALUE ? min : 0);
     }
 }
