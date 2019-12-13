@@ -1,3 +1,5 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 // A pandigital number contains all digits (0-9) at least once. Write a function that takes an integer, returning true if the integer is pandigital, and false otherwise.
 // isPandigital(98140723568910) ➞ true
 
@@ -44,10 +46,10 @@ class PandigitalNumbers {
         TestAggregate("784163509", false);
         TestAggregate("1839725064", true);
         TestAggregate("1839725064", true);
-        TestAggregate(CreateLongString("12345678","9",100000), true);
-        TestAggregate(CreateLongString("12345678","9",100000000), true);
-        TestAggregate(CreateLongString("12345678","0",100000000), false);
-        TestAggregate(CreateLongString("123456789","0",100000000), true);
+        TestAggregate(CreateLongString("12345678", "9", 100000), true);
+        TestAggregate(CreateLongString("12345678", "9", 100000000), true);
+        TestAggregate(CreateLongString("12345678", "0", 100000000), false);
+        TestAggregate(CreateLongString("123456789", "0", 100000000), true);
         PrintTotalResults();
     }
 
@@ -58,7 +60,7 @@ class PandigitalNumbers {
     private static boolean ForrestSolution(String input) {
         String digits = "1234567890";
         for (int i = 0; i < input.length(); i++) {
-            if (digits.length() == 0) 
+            if (digits.length() == 0)
                 break;
             char c = input.charAt(i);
             int digitsIndexOfC = digits.indexOf(c);
@@ -69,13 +71,13 @@ class PandigitalNumbers {
     }
 
     private static boolean KevinSolution(String input) {
-        return true;
+        throw new NotImplementedException();
     }
 
-    private static String CreateLongString(String beginning, String end, int numZeroes){
+    private static String CreateLongString(String beginning, String end, int numZeroes) {
         StringBuffer sb = new StringBuffer(numZeroes);
         sb.append(beginning);
-        for (int i = 0; i < numZeroes; i++){
+        for (int i = 0; i < numZeroes; i++) {
             sb.append("0");
         }
         sb.append(end);
@@ -95,7 +97,9 @@ class PandigitalNumbers {
     }
 
     private static OverallResult Test(String input, boolean expectedResult) {
-        String printableInput = input.length() > 50 ? input.substring(0,50) + "..." + input.substring(input.length()-1) : input;
+        String printableInput = input.length() > 50
+                ? input.substring(0, 50) + "..." + input.substring(input.length() - 1)
+                : input;
         System.out.println("\nTesting input '" + printableInput + "' with expectedResult '" + expectedResult + "'");
         String label;
         IPandigital method;
@@ -106,7 +110,12 @@ class PandigitalNumbers {
         method = (i) -> {
             return ForrestSolution(i);
         };
-        result = TimeAndTest(method, input, expectedResult);
+        try {
+            result = TimeAndTest(method, input, expectedResult);
+        } catch (Exception e) {
+            System.out.println("Exception while executing ForrestSolution: '" + e.toString() + "'");
+            result = new Result(false, 0);
+        }
         overallResult.ForrestSucceeded = result.Succeeded;
         PrintResult(label, result);
 
@@ -115,7 +124,12 @@ class PandigitalNumbers {
         method = (i) -> {
             return KevinSolution(i);
         };
-        result = TimeAndTest(method, input, expectedResult);
+        try {
+            result = TimeAndTest(method, input, expectedResult);
+        } catch (Exception e) {
+            System.out.println("Exception while executing KevinSolution: '" + e.toString() + "'");
+            result = new Result(false, 0);
+        }
         overallResult.KevinSucceeded = result.Succeeded;
         PrintResult(label, result);
         return overallResult;
