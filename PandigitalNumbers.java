@@ -5,7 +5,6 @@
 // // 7 is missing.
 
 // isPandigital(112233445566778899) ➞ false
-
 class Result {
     public long ElapsedTime;
     public boolean Succeeded;
@@ -44,7 +43,11 @@ class PandigitalNumbers {
         TestAggregate("234567890", false);
         TestAggregate("784163509", false);
         TestAggregate("1839725064", true);
-
+        TestAggregate("1839725064", true);
+        TestAggregate(CreateLongString("12345678","9",100000), true);
+        TestAggregate(CreateLongString("12345678","9",100000000), true);
+        TestAggregate(CreateLongString("12345678","0",100000000), false);
+        TestAggregate(CreateLongString("123456789","0",100000000), true);
         PrintTotalResults();
     }
 
@@ -53,11 +56,30 @@ class PandigitalNumbers {
     }
 
     private static boolean ForrestSolution(String input) {
-        return false;
+        String digits = "1234567890";
+        for (int i = 0; i < input.length(); i++) {
+            if (digits.length() == 0) 
+                break;
+            char c = input.charAt(i);
+            int digitsIndexOfC = digits.indexOf(c);
+            if (digitsIndexOfC != -1)
+                digits = digits.substring(0, digitsIndexOfC) + digits.substring(digitsIndexOfC + 1);
+        }
+        return digits.length() == 0;
     }
 
     private static boolean KevinSolution(String input) {
         return true;
+    }
+
+    private static String CreateLongString(String beginning, String end, int numZeroes){
+        StringBuffer sb = new StringBuffer(numZeroes);
+        sb.append(beginning);
+        for (int i = 0; i < numZeroes; i++){
+            sb.append("0");
+        }
+        sb.append(end);
+        return sb.toString();
     }
 
     private static void TestAggregate(String input, boolean expectedResult) {
@@ -73,7 +95,8 @@ class PandigitalNumbers {
     }
 
     private static OverallResult Test(String input, boolean expectedResult) {
-        System.out.println("\nTesting input '" + input + "' with expectedResult '" + expectedResult + "'");
+        String printableInput = input.length() > 50 ? input.substring(0,50) + "..." + input.substring(input.length()-1) : input;
+        System.out.println("\nTesting input '" + printableInput + "' with expectedResult '" + expectedResult + "'");
         String label;
         IPandigital method;
         OverallResult overallResult = new OverallResult();
@@ -104,10 +127,13 @@ class PandigitalNumbers {
         System.out.println(message);
     }
 
-    private static void PrintTotalResults(){
+    private static void PrintTotalResults() {
         int total = PandigitalNumbers.fPassed + PandigitalNumbers.fFailed;
-        System.out.println("ForrestSolution passed " + PandigitalNumbers.fPassed / (double)total * 100 + "% of " + total + "total tests");
-        System.out.println("KevinSolution passed " + PandigitalNumbers.kPassed / (double)total * 100 + "% of " + total + "total tests");
+        System.out.println("---------------------------------------------------");
+        System.out.println("ForrestSolution passed " + PandigitalNumbers.fPassed / (double) total * 100 + "% of "
+                + total + " total tests");
+        System.out.println("KevinSolution passed " + PandigitalNumbers.kPassed / (double) total * 100 + "% of " + total
+                + " total tests");
     }
 
     private static Result TimeAndTest(IPandigital method, String input, boolean expectedResult) {
