@@ -70,8 +70,23 @@ class PandigitalNumbers {
         return digits.length() == 0;
     }
 
-    private static boolean KevinSolution(String input) {
-        throw new NotImplementedException();
+    public static boolean KevinSolution(String input){
+        HashMap<Character, Integer> map = new HashMap<>() {{
+            put('0', 0);
+            put('1', 0);
+            put('2', 0);
+            put('3', 0);
+            put('4', 0);
+            put('5', 0);
+            put('6', 0);
+            put('7', 0);
+            put('8', 0);
+            put('9', 0);
+        }};
+        for(char c : input.toCharArray()){
+            map.put(c, map.get(c) + 1);
+        }
+        return !map.containsValue(0);
     }
 
     private static String CreateLongString(String beginning, String end, int numZeroes) {
