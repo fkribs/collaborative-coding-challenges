@@ -1,4 +1,5 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.HashMap;
 
 // A pandigital number contains all digits (0-9) at least once. Write a function that takes an integer, returning true if the integer is pandigital, and false otherwise.
 // isPandigital(98140723568910) ➞ true
@@ -71,7 +72,7 @@ class PandigitalNumbers {
     }
 
     public static boolean KevinSolution(String input){
-        HashMap<Character, Integer> map = new HashMap<>() {{
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>() {{
             put('0', 0);
             put('1', 0);
             put('2', 0);

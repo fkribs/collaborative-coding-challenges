@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - MissingInteger",
+            "request": "launch",
+            "mainClass": "MissingInteger",
+            "projectName": "collaborative-coding-challenges_7df40ef"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - PandigitalNumbers",
             "request": "launch",
             "mainClass": "PandigitalNumbers",
