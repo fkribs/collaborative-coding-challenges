@@ -34,16 +34,25 @@ class MissingInteger {
     static int fFailed = 0;
 
     public static void main(String[] args) {
-        TestAggregate(GenerateInput(100, 40), 40);
+        for (int i = 1; i < 100; i++){
+            TestAggregate(GenerateInput(100, i), i);
+        }
         PrintTotalResults();
     }
 
-    private interface IMissingInteger{
+    private interface IMissingInteger {
         int getMissingInt(int[] input);
     }
 
     private static int ForrestSolution(int[] input) {
-        throw new NotImplementedException();
+        int previous = 0;
+        for (int i : input) {
+            int oneLessThanCurrent = i - 1;
+            if (previous != oneLessThanCurrent)
+                return oneLessThanCurrent;
+            previous = i;
+        }
+        return -1;
     }
 
     public static int KevinSolution(int[] input) {
@@ -51,11 +60,13 @@ class MissingInteger {
     }
 
     private static int[] GenerateInput(int inputSize, int missingInteger) {
-        int currentInt = -1;
+        int currentInt = 0;
         int[] returnList = new int[inputSize - 1];
-        for (int i = 0; i < inputSize-1; i++) {
-            if (++currentInt == missingInteger)
+        for (int i = 0; i < inputSize - 1; i++) {
+            if (++currentInt == missingInteger) {
+                i--;
                 continue;
+            }
             returnList[i] = currentInt;
         }
         return returnList;
@@ -74,7 +85,7 @@ class MissingInteger {
     }
 
     private static OverallResult Test(int[] input, int expectedResult) {
-        int inputSize = input.length; 
+        int inputSize = input.length;
         System.out.println("\nTesting input of size (" + inputSize + ") with expectedResult '" + expectedResult + "'");
         String label;
         IMissingInteger method;
@@ -119,8 +130,8 @@ class MissingInteger {
     private static void PrintTotalResults() {
         int total = MissingInteger.fPassed + MissingInteger.fFailed;
         System.out.println("---------------------------------------------------");
-        System.out.println("ForrestSolution passed " + MissingInteger.fPassed / (double) total * 100 + "% of "
-                + total + " total tests");
+        System.out.println("ForrestSolution passed " + MissingInteger.fPassed / (double) total * 100 + "% of " + total
+                + " total tests");
         System.out.println("KevinSolution passed " + MissingInteger.kPassed / (double) total * 100 + "% of " + total
                 + " total tests");
     }
@@ -128,6 +139,7 @@ class MissingInteger {
     private static Result TimeAndTest(IMissingInteger method, int[] input, int expectedResult) {
         long startTime = System.currentTimeMillis();
         int result = method.getMissingInt(input);
+        System.out.println(result);
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         return new Result(result == expectedResult, elapsedTime);
