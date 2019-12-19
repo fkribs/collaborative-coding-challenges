@@ -55,8 +55,13 @@ class MissingInteger {
         return -1;
     }
 
-    public static int KevinSolution(int[] input) {
-        throw new NotImplementedException();
+    public static int KevinSolution(int[] input){
+        final int One2HundredSum = 5050;
+        int actual = 0;
+        for(int i : input){
+            actual += i;
+        }
+        return One2HundredSum - actual;
     }
 
     private static int[] GenerateInput(int inputSize, int missingInteger) {
