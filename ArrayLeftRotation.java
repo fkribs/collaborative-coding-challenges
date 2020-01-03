@@ -37,7 +37,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 class ArrayLeftRotation {
     public static void main(String[] args) {
-        int[] array = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int[] array = new int[] {1, 2, 3, 4, 5};
         int numIntegers = 5;
         int numLeftRotations = 4;
         System.out.println("Forrest: " + ForrestSolution(numIntegers, numLeftRotations, array));
@@ -47,7 +47,7 @@ class ArrayLeftRotation {
     public static int[] ForrestSolution(int numIntegers, int numLeftRotations, int[] initialArray) {
         throw new NotImplementedException();
     }
-
+//should 
     public static int[] KevinSolution(int numIntegers, int numLeftRotations, int[] initialArray) {
         throw new NotImplementedException();
     }
